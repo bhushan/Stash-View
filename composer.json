@@ -1,0 +1,55 @@
+{
+  "name": "enlight/stash-view",
+  "description": "Cache laravel view using Russian Doll Cache methodology.",
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "Russian",
+    "doll",
+    "cache",
+    "stash",
+    "view",
+    "php"
+  ],
+  "authors": [
+    {
+      "name": "Bhushan Gaykawad",
+      "email": "bhushangaykawad@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.2",
+    "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^5.3",
+    "phpunit/phpunit": "^9.3@dev"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Enlight\\StashView\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Enlight\\StashView\\Providers\\StashViewServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "test": "vendor/bin/phpunit"
+  }
+}
