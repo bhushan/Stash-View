@@ -8,6 +8,7 @@ use Enlight\StashView\CacheDirective;
 use Enlight\StashView\RussianCaching;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Contracts\Cache\Repository;
 
 class StashViewServiceProvider extends ServiceProvider
 {
@@ -35,8 +36,10 @@ class StashViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->singleton(CacheDirective::class, function () {
-            new CacheDirective(
-                new RussianCaching()
+            return new CacheDirective(
+                new RussianCaching(
+                    app(Repository::class)
+                )
             );
         });
     }
