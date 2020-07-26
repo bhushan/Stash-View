@@ -6,9 +6,11 @@ namespace Enlight\StashView\Providers;
 
 use Enlight\StashView\CacheDirective;
 use Enlight\StashView\RussianCaching;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Cache\Repository;
+use Enlight\StashView\Middlewares\SetArrayCacheDriver;
 
 class StashViewServiceProvider extends ServiceProvider
 {
@@ -19,28 +21,31 @@ class StashViewServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        Blade::directive('cache', function ($expression) {
-            return "<?php if(! app('Enlight\StashView\CacheDirective')->setUp({$expression})) : ?>";
-        });
-
-        Blade::directive('endcache', function () {
-            return "<?php endif; echo app('Enlight\StashView\CacheDirective')->tearDown(); ?>";
-        });
-    }
-
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot(): void
-    {
         $this->app->singleton(CacheDirective::class, function () {
             return new CacheDirective(
                 new RussianCaching(
                     app(Repository::class)
                 )
             );
+        });
+    }
+
+    /**
+     * Bootstrap any application services.
+     *
+     * @param Kernel $kernel
+     * @return void
+     */
+    public function boot(Kernel $kernel): void
+    {
+        $kernel->pushMiddleware(SetArrayCacheDriver::class);
+
+        Blade::directive('cache', function ($expression) {
+            return "<?php if(! app('Enlight\StashView\CacheDirective')->setUp({$expression})) : ?>";
+        });
+
+        Blade::directive('endcache', function () {
+            return "<?php endif; echo app('Enlight\StashView\CacheDirective')->tearDown(); ?>";
         });
     }
 }
