@@ -1,15 +1,16 @@
 {
   "name": "enlight/stash-view",
-  "description": "Cache laravel view using Russian Doll Cache methodology.",
+  "description": "Stash view is a composer package for Laravel which caches blade views using Russian Doll Caching methodology. Which drastically improves speed of the website and as a side effect reduces sql queries and solves n+1 problem.",
   "license": "MIT",
   "keywords": [
+    "php",
     "laravel",
+    "blade",
     "Russian",
     "doll",
     "cache",
     "stash",
-    "view",
-    "php"
+    "view"
   ],
   "authors": [
     {
