@@ -8,6 +8,7 @@ use Tests\Models\Post;
 use Illuminate\Foundation\Application;
 use Illuminate\Database\Eloquent\Model;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
+use Enlight\StashView\Providers\StashViewServiceProvider;
 
 abstract class TestCase extends OrchestraTestCase
 {
@@ -48,7 +49,7 @@ abstract class TestCase extends OrchestraTestCase
      */
     protected function getPackageProviders($app): array
     {
-        return ['Enlight\StashView\Providers\StashViewServiceProvider'];
+        return [StashViewServiceProvider::class];
     }
 
     /**
