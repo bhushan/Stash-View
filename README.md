@@ -14,6 +14,8 @@ This article will give you more clear [idea](https://signalvnoise.com/posts/3112
 
 > You can also checkout example code from [here](https://github.com/bhushan/Stash-View-Example)
 
+> Want video explaination of internals? check this [youtube](https://www.youtube.com/watch?v=iNWCCYs0qKs) link. 
+
 ## Installation
 
 ### Step 1: Composer
