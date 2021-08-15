@@ -1,8 +1,8 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
-$finder = Symfony\Component\Finder\Finder::create()
+$finder = PhpCsFixer\Finder::create()
     ->notPath('bootstrap/*')
     ->notPath('storage/*')
     ->notPath('storage/*')
@@ -16,7 +16,7 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRules([
         '@PSR2' => true,
         'array_syntax' => ['syntax' => 'short'],
