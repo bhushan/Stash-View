@@ -4,7 +4,7 @@
 
 /vendor/
 
-.php_cs.cache
+.php-cs-fixer.cache
 .phpunit.result.cache
 
 # with package dont need to maintain it
